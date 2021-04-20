@@ -41,7 +41,7 @@ I looked through all of the columns and the constituent data (e.g., categories f
 and numerical summaries for numerical data). The following are some brief notes about the
 results of the data cleaning process. I omit the analysis of every variable for brevity.
 
-#### `device`
+#### Variable: `device`
 
 The table below shows a frequency table of the `device` categories.
 ```{r}
@@ -59,7 +59,7 @@ examination, those with missing devices did not have any apparent difference wit
 the dataset. For aggregate analyses, I will not remove them, but missing devices will be removed
 in an analysis that uses `device`.
 
-#### `gender`
+#### Variable: `gender`
 
 The dataset contains three gender groups, `male`, `female`, and missing (empty string).
 
@@ -69,7 +69,7 @@ table(dataset$gender)
 
 The missing values seem well-populated and there does not appear to be anything different about this group in terms of the other variables. It seems reasonable to keep the third category.
 
-#### `group`
+#### Variable: `group`
 
 ```{r}
 group_table = table(dataset$group)
@@ -93,7 +93,7 @@ In addition, I also checked the grouping by `sessionid`. I found `r multiple_gro
 sessions where the user was assigned to both groups. There did not seem to be anything unusual
 about these sessions and since the number of small, I will leave them in the dataset.
 
-#### `campaigntimestamp`
+#### Variable: `campaigntimestamp`
 
 There is one observation where the time-stamp is recorded as the year 2039. Because it is only
 one observation, I will remove it from the dataset. If it was more (e.g., more than 500), I would consider attempting to reassign the year using some kind of multiple imputation method.
@@ -101,7 +101,7 @@ This also means that `cohort` will have one unusual value.
 
 I will make the change to `campaigntimestamp` and `cohort` after the data check.
 
-#### `bidprice_usd`
+#### Variable: `bidprice_usd`
 
 At first, it seemed unusual for `bidprice_usd` to be zero, and especially so when
 `bidprice_usd` was zero and the corresponding `value` was greater than zero. However, after
@@ -128,7 +128,7 @@ dataset[bidprice_usd > 0, {
 } ]
 ```
 
-#### `value`
+#### Variable: `value`
 
 The table below shows some selected quantiles of the `value` distribution.
 
